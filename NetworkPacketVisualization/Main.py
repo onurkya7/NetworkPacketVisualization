@@ -86,6 +86,52 @@ class App(customtkinter.CTk):
         self.appearance_mode_menu.grid(row=10, column=0, padx=20, pady=20, sticky="s")
 
 
+        # create home frame
+        self.home_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.home_frame_33 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
+        self.home_frame_33.grid(row=0, column=0,ipady= 500, sticky="nsew")
+        self.home_frame_33.grid_rowconfigure(10, weight=1)
+        self.home_frame_33.grid_columnconfigure(1, weight=1)
+        self.frame_info = customtkinter.CTkFrame(self.home_frame_33)
+        self.frame_info.grid(row=1, column=0, columnspan=2, rowspan=4, pady=20, padx=100, sticky="nsew")
+        self.frame_info.grid_rowconfigure(10, weight=1)
+        self.frame_info.grid_columnconfigure(1, weight=1)
+        self.labelinfo_mode = customtkinter.CTkLabel(self.home_frame_33, 
+                                                     text="Listening makes attacking easier to understand..",
+                                                     font=customtkinter.CTkFont(size=21, weight="bold"),image= self.gb_image)
+        self.labelinfo_mode.grid(row=0, column=0, pady=20, padx=100, sticky="w")    
+        self.entry_6 = customtkinter.CTkEntry(self.frame_info,
+                                                width=650,
+                                                placeholder_text="Select Pcap File")
+        self.entry_6.grid(row=1, column=0,  pady=5, padx=10, sticky="we")
+        self.entry_7 = customtkinter.CTkEntry(self.frame_info,
+                                                width=650,
+                                                placeholder_text="Select Csv File")
+        self.entry_7.grid(row=3, column=0,  pady=5, padx=10, sticky="we")
+        self.folder_button = customtkinter.CTkButton(self.frame_info,
+                                                text="Browse",
+                                                border_width=2,
+                                                image=self.browse_image,
+                                                fg_color="black",  # <- no fg_color
+                                                command=self.my_fun)
+        self.folder_button.grid(row=1, column=1,padx=10, sticky="ew")
+        self.folder_button_2 = customtkinter.CTkButton(self.frame_info,
+                                                text="Browse",
+                                                border_width=2,
+                                                image=self.browse_image,
+                                                fg_color="black",  # <- no fg_color
+                                                command=self.my_fun)
+        self.folder_button_2.grid(row=3, column=1,padx=10, sticky="ew")
+        self.home_label_1 = customtkinter.CTkLabel(self.frame_info,
+                                                        text="Pcap:")
+        self.home_label_1.grid(row=0, column=0, columnspan=1, pady=5, padx=0, sticky="")
+        self.home_label_2 = customtkinter.CTkLabel(self.frame_info,
+                                                        text="Csv:")
+        self.home_label_2.grid(row=2, column=0, columnspan=1, pady=5, padx=0, sticky="")
+        self.home_frame_44 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
+        self.home_frame_44.grid(row=0, column=1,ipady= 500,ipadx=70,padx=0, sticky="nsew")
+
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()
