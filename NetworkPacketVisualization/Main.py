@@ -131,6 +131,45 @@ class App(customtkinter.CTk):
         self.home_frame_44 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
         self.home_frame_44.grid(row=0, column=1,ipady= 500,ipadx=70,padx=0, sticky="nsew")
 
+         # create second frame
+        ##frame
+        self.second_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.second_frame_11 = customtkinter.CTkFrame(self.second_frame, corner_radius=0,fg_color="transparent")
+        self.second_frame_11.grid(row=0, column=0,ipady= 500,ipadx=50, sticky="nsew")
+        self.second_frame_11.grid_rowconfigure(10, weight=1)
+        self.second_frame_11.grid_columnconfigure(3, weight=1)
+        self.second_frame_22 = customtkinter.CTkFrame(self.second_frame, corner_radius=0,fg_color="transparent")
+        self.second_frame_22.grid(row=0, column=1,ipady= 500,ipadx=100, sticky="nsew")
+        self.second_frame_22.grid_rowconfigure(1, weight=1)
+        self.second_frame_22.grid_columnconfigure(0, weight=1)   
+        self.labelfree_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+        self.labelfree_mode.grid(row=2, column=1, pady=20, padx=40, sticky="w")
+        self.labelfree2_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+        self.labelfree2_mode.grid(row=2, column=1, pady=20, padx=40, sticky="w")
+        self.labelfree3_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+        self.labelfree3_mode.grid(row=5, column=1, pady=20, padx=40, sticky="w")
+        self.labelfree4_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+        self.labelfree4_mode.grid(row=5, column=1, pady=20, padx=40, sticky="w")
+        self.labelfree5_mode = customtkinter.CTkLabel(self.second_frame_11, text="       Enter the package number:")
+        self.labelfree5_mode.grid(row=3, column=0, pady=20, padx=40, sticky="w")
+        #self.labelswitch_1 = customtkinter.CTkLabel(self.second_frame_11, text="       Use Json:")
+        #self.labelswitch_1.grid(row=5, column=0, pady=20, padx=40, sticky="w")        
+        self.switch_1 = customtkinter.CTkSwitch(self.second_frame_11,text=" JSON",progress_color="green")
+        self.switch_1.grid(row=4, column=1,pady=10, padx=10)     
+        self.entry_1 = customtkinter.CTkEntry(self.second_frame_11,
+                                            width=200,
+                                            placeholder_text="")
+        self.entry_1.grid(row=3, column=1,  pady=20, padx=10, sticky="we")
+        self.button_10 = customtkinter.CTkButton(self.second_frame_11,
+                                                text="Analyze",
+                                                border_width=2,  # <- custom border_width
+                                                fg_color=None,  # <- no fg_color
+                                                command=self.analysis)
+        self.button_10.grid(row=5, column=1, padx=20, pady=10)
+        self.textbox_1 = customtkinter.CTkTextbox(self.second_frame_22, fg_color="black", corner_radius=0,text_color="white")
+        self.textbox_1.grid(row=0, column=0, ipadx= 70,ipady= 300,pady=60,padx=20, sticky="nsew")       
+        self.textbox_1.insert("0.0", "Enter package index and analyze..")
+
 
 if __name__ == "__main__":
     app = App()
