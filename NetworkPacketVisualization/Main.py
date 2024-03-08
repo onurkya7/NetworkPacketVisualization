@@ -170,6 +170,70 @@ class App(customtkinter.CTk):
         self.textbox_1.grid(row=0, column=0, ipadx= 70,ipady= 300,pady=60,padx=20, sticky="nsew")       
         self.textbox_1.insert("0.0", "Enter package index and analyze..")
 
+        # create third frame
+        self.third_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.third_frame_1 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
+        self.third_frame_1.grid(row=1, column=0,padx=10,pady=10,sticky="nsew")
+        self.third_frame_2 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
+        self.third_frame_2.grid(row=1, column=1,padx=10,pady=10,sticky="nsew")
+        self.third_frame_3 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
+        self.third_frame_3.grid(row=2, column=0,padx=10,pady=10,sticky="nsew")
+        self.third_frame_4 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
+        self.third_frame_4.grid(row=2, column=1,padx=10,pady=10,sticky="nsew")
+        self.third_frame_0 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
+        self.third_frame_0.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
+        self.third_frame_0.grid_columnconfigure(4, weight=1)
+        self.third_button_1 = customtkinter.CTkButton(self.third_frame_0,
+                                                text="Graph",
+                                                border_width=2,  
+                                                fg_color=None,
+                                                command=self.graph)
+        self.third_button_1.grid(row=0, column=0, padx=70, pady=10)
+        self.third_button_2 = customtkinter.CTkButton(self.third_frame_0,
+                                                text="Delete",
+                                                border_width=2,  
+                                                fg_color=None,  
+                                                command=self.delete)
+        self.third_button_2.grid(row=0, column=1, padx=70, pady=10)
+        self.third_entry = customtkinter.CTkEntry(self.third_frame_0,
+                                                width=30,
+                                                placeholder_text="Folder")
+        self.third_entry.grid(row=0, column=2,  pady=5, padx=70,ipadx=50, sticky="we")
+        self.third_entry.insert("0",0)
+
+        self.third_label_2 = customtkinter.CTkLabel(self.third_frame_3,
+                                                        text="Source Ip Limit:")
+        self.third_label_2.grid(row=1, column=0, columnspan=1, pady=10, padx=200, sticky="")
+        self.third_label_3 = customtkinter.CTkLabel(self.third_frame_3,
+                                                        text="Dest Ip Limit:")
+        self.third_label_3.grid(row=3, column=0, columnspan=1, pady=10, padx=200, sticky="")
+        self.third_entry_2= customtkinter.CTkEntry(self.third_frame_3,
+                                                width=50,
+                                                placeholder_text="Count_S")
+        self.third_entry_2.grid(row=2, column=0,  pady=10, padx=200, sticky="we")
+        self.third_entry_2.insert("0",0)
+        self.third_entry_3 = customtkinter.CTkEntry(self.third_frame_3,
+                                            width=50,
+                                            placeholder_text="Count_D ")
+        self.third_entry_3.grid(row=4, column=0,  pady=10, padx=200, sticky="we")
+        self.third_entry_3.insert("0",0)
+    
+
+        #settings (fourth frame)
+        self.fourth_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.fourth_frame_1 = customtkinter.CTkFrame(self.fourth_frame, corner_radius=0,fg_color="transparent")
+        self.fourth_frame_1.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
+        self.scaling_label = customtkinter.CTkLabel(self.fourth_frame_1, text="UI Scaling:", anchor="w")
+        self.scaling_label.grid(row=0, column=0, padx=20, pady=(20, 0))
+        self.scaling_label_1 = customtkinter.CTkLabel(self.fourth_frame_1, text="Screen Brightness:", anchor="w")
+        self.scaling_label_1.grid(row=2, column=0, padx=20, pady=(20, 0))
+        self.scaling_optionemenu = customtkinter.CTkOptionMenu(self.fourth_frame_1, values=["80%", "90%", "100%", "110%", "120%"],
+                                                               command=self.change_scaling_event)
+        self.scaling_optionemenu.grid(row=1, column=0, padx=20, pady=(10, 20))
+        self.slider_1 = customtkinter.CTkSlider(self.fourth_frame_1, command=self.slider_callback, from_=0, to=1)
+        self.slider_1.grid(row=3,column=0, pady=20, padx=20)
+        self.slider_1.set(0.8)
+
 
 if __name__ == "__main__":
     app = App()
