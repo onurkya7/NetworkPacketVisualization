@@ -85,7 +85,6 @@ class App(customtkinter.CTk):
                                                                 command=self.change_appearance_mode_event)
         self.appearance_mode_menu.grid(row=10, column=0, padx=20, pady=20, sticky="s")
 
-
         # create home frame
         self.home_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.home_frame_33 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
@@ -130,8 +129,9 @@ class App(customtkinter.CTk):
         self.home_label_2.grid(row=2, column=0, columnspan=1, pady=5, padx=0, sticky="")
         self.home_frame_44 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
         self.home_frame_44.grid(row=0, column=1,ipady= 500,ipadx=70,padx=0, sticky="nsew")
-
-         # create second frame
+    
+    
+        # create second frame
         ##frame
         self.second_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.second_frame_11 = customtkinter.CTkFrame(self.second_frame, corner_radius=0,fg_color="transparent")
@@ -233,6 +233,64 @@ class App(customtkinter.CTk):
         self.slider_1 = customtkinter.CTkSlider(self.fourth_frame_1, command=self.slider_callback, from_=0, to=1)
         self.slider_1.grid(row=3,column=0, pady=20, padx=20)
         self.slider_1.set(0.8)
+
+        # create fifth frame
+        self.fifth_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.fifth_frame_1 = customtkinter.CTkFrame(self.fifth_frame, corner_radius=0,fg_color="transparent")
+        self.fifth_frame_1.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
+        self.fifth_frame_2 = customtkinter.CTkFrame(self.fifth_frame, corner_radius=0,fg_color="transparent")
+        self.fifth_frame_2.grid(row=1, column=0,padx=10,pady=10,sticky="nsew")
+        self.fifth_entry= customtkinter.CTkEntry(self.fifth_frame_1,
+                                                width=100,
+                                                placeholder_text="0")
+        self.fifth_entry.grid(row=1, column=0,  pady=5, padx=60, sticky="we")
+        self.fifth_entry_2= customtkinter.CTkEntry(self.fifth_frame_1,
+                                                width=100,
+                                                placeholder_text="0")
+        self.fifth_entry_2.grid(row=1, column=1,  pady=5, padx=60, sticky="we")
+        self.fifth_entry_3= customtkinter.CTkEntry(self.fifth_frame_1,
+                                                width=100,
+                                                placeholder_text="0")
+        self.fifth_entry_3.grid(row=1, column=2,  pady=5, padx=60, sticky="we")
+        self.fifth_entry_4= customtkinter.CTkEntry(self.fifth_frame_1,
+                                                width=100,
+                                                placeholder_text="0")
+        self.fifth_entry_4.grid(row=1, column=3,  pady=5, padx=60, sticky="we")
+        self.fifth_entry_5= customtkinter.CTkEntry(self.fifth_frame_1,
+                                                width=100,
+                                                placeholder_text="0")
+        self.fifth_entry_5.grid(row=1, column=4,  pady=5, padx=60, sticky="we")
+        self.fifth_label = customtkinter.CTkLabel(self.fifth_frame_1, text="  Protocol Filter:", anchor="w",image=self.ftp_image,compound="left")
+        self.fifth_label.grid(row=0, column=0, padx=10, pady=(20, 0))
+        self.fifth_label_2 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Time Filter Min:", anchor="w",image=self.mintime_image,compound="left")
+        self.fifth_label_2.grid(row=0, column=1, padx=10, pady=(20, 0))
+        self.fifth_label_3 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Time Filter Max:", anchor="w",image=self.maxtime_image,compound="left")
+        self.fifth_label_3.grid(row=0, column=2, padx=10, pady=(20, 0))
+        self.fifth_label_4 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Length Filter Min:", anchor="w",image=self.minlen_image,compound="left")
+        self.fifth_label_4.grid(row=0, column=3, padx=10, pady=(20, 0))
+        self.fifth_label_5 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Length Filter Max:", anchor="w",image=self.maxlen_image,compound="left")
+        self.fifth_label_5.grid(row=0, column=4, padx=10, pady=(20, 0))
+        self.fifth_button = customtkinter.CTkButton(self.fifth_frame_1,
+                                                text="Filter",
+                                                border_width=2,  
+                                                fg_color="black",  
+                                                command=self.filter)
+        self.fifth_button.grid(row=0, column=5, padx=10, pady=10)
+        self.fifth_button2 = customtkinter.CTkButton(self.fifth_frame_1,
+                                                text="Delete",
+                                                border_width=2,  
+                                                fg_color=None,  
+                                                command=self.delete2)
+        self.fifth_button2.grid(row=1, column=5, padx=10, pady=10)
+
+
+
+        # set default values
+        self.scaling_optionemenu.set("100%")
+        self.appearance_mode_menu.set("Dark")
+
+        # select default frame
+        self.select_frame_by_name("home")
 
 
 if __name__ == "__main__":
