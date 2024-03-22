@@ -293,6 +293,279 @@ class App(customtkinter.CTk):
         self.select_frame_by_name("home")
 
 
+        
+    #################___FONK___####################
+
+
+    def select_frame_by_name(self, name):
+        # set button color for selected button
+        self.home_button.configure(fg_color=("gray75", "gray25") if name == "home" else "transparent")
+        self.frame_2_button.configure(fg_color=("gray75", "gray25") if name == "frame_2" else "transparent")
+        self.frame_3_button.configure(fg_color=("gray75", "gray25") if name == "frame_3" else "transparent")
+        self.frame_4_button.configure(fg_color=("gray75", "gray25") if name == "frame_4" else "transparent")
+        self.frame_5_button.configure(fg_color=("gray75", "gray25") if name == "frame_5" else "transparent")
+
+        # show selected frame
+        if name == "home":
+            self.home_frame.grid(row=0, column=1,sticky="nsew")
+        else:
+            self.home_frame.grid_forget()
+        if name == "frame_2":
+            self.second_frame.grid(row=0, column=1, sticky="nsew")
+        else:
+            self.second_frame.grid_forget()
+        if name == "frame_3":
+            self.third_frame.grid(row=0, column=1, sticky="nsew")
+        else:
+            self.third_frame.grid_forget()
+        if name == "frame_4":
+            self.fourth_frame.grid(row=0, column=1, sticky="nsew")
+        else:
+            self.fourth_frame.grid_forget()
+        if name == "frame_5":
+            self.fifth_frame.grid(row=0, column=1, sticky="nsew")
+        else:
+            self.fifth_frame.grid_forget()
+
+
+    def home_button_event(self):
+        self.select_frame_by_name("home")
+
+    def frame_2_button_event(self):
+        self.select_frame_by_name("frame_2")
+
+    def frame_3_button_event(self):
+        self.select_frame_by_name("frame_3")
+
+    def frame_4_button_event(self):
+        self.select_frame_by_name("frame_4")
+    
+    def frame_5_button_event(self):
+        self.select_frame_by_name("frame_5")
+
+    def change_appearance_mode_event(self, new_appearance_mode):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
+
+    def slider_callback(self,value):
+        sbc.set_brightness(value*100)
+
+    def file_a(self):
+        file = str(self.entry_6.get())
+        self.home_label_1 = customtkinter.CTkLabel(self.home_frame_44,
+                                                        text="File Properties :",font=customtkinter.CTkFont(size=15, weight="bold"))
+        self.home_label_1.grid(row=0, column=0, columnspan=1, pady=15, padx=100, sticky="")
+        self.home_textbox_1 = customtkinter.CTkTextbox(self.home_frame_44, fg_color="white", corner_radius=0,text_color="darkblue")
+        self.home_textbox_1.grid(row=1, column=0, ipadx= 40,pady=5, padx=20, sticky="nsew")       
+        self.home_textbox_1.insert("1.0", 'File :\n')
+        self.home_textbox_1.insert("2.0",  file)
+        self.home_textbox_1.insert("3.0", '\nAccess time:\n')
+        self.home_textbox_1.insert("4.0", time.ctime(os.path.getatime(file)))
+        self.home_textbox_1.insert("5.0", '\nModified time:\n')
+        self.home_textbox_1.insert("6.0", time.ctime(os.path.getmtime(file)))
+        self.home_textbox_1.insert("7.0", '\nSize:\n')
+        self.home_textbox_1.insert("8.0", os.path.getsize(file))
+
+
+    def my_fun(self): 
+        self.entry_6.destroy()
+        self.entry_6 = customtkinter.CTkEntry(self.frame_info,
+                                                width=500,
+                                                placeholder_text="Folder")
+        self.entry_6.grid(row=1, column=0,  pady=5, padx=10, sticky="we")
+        my_dir1 = filedialog.askopenfilename() # select directory
+        self.entry_6.insert("0", my_dir1)
+        self.file_a()
+ 
+    def my_fun2(self):
+        my_dir2 = filedialog.askopenfilename() # select directory
+        self.entry_7.insert("0", my_dir2)
+
+    def delete(self):
+        self.protocol_img_mode.destroy()
+        self.s_ip_img_mode.destroy()
+        self.d_ip_img_mode.destroy()
+        #self.protocol_img_mode2.destroy()
+
+    def delete2(self):
+        try:
+            self.text_1.destroy()
+        except:
+            pass
+
+    def filter(self):
+        self.text_1 = customtkinter.CTkTextbox(self.fifth_frame_2, width=1500, height=850,fg_color="white",text_color="black")
+        self.text_1.pack(pady=10, padx=10)
+        pacs = pyshark.FileCapture(self.entry_6.get(),only_summaries=True,display_filter=str(self.fifth_entry.get()))
+        list = []
+        for packet in pacs:
+            line = str(packet)
+            fL= line.split(" ")
+            if float(self.fifth_entry_2.get()) < float(fL[1]) < float(self.fifth_entry_3.get()) and float(self.fifth_entry_4.get()) < float(fL[5]) < float(self.fifth_entry_5.get()):
+                list.append(fL)
+        pacs.close()
+
+        for i in range(len(list)):
+            self.text_1.insert("0.0", str(list[i])+"\n\n")
+
+    def graph(self):
+            count = int(self.third_entry.get())
+
+            #protocol graph
+            dosya_adi = "pro"+ str(count) + ".png"
+            dosya_yolu = os.path.join("./img/", dosya_adi)
+
+            cap = pyshark.FileCapture(self.entry_6.get(),only_summaries=True)
+            protocolList = []
+            for packet in cap:
+                line = str(packet)
+                fL= line.split(" ")
+                protocolList.append(fL[4])
+            cap.close()
+            counter = collections.Counter(protocolList)
+            plt.style.use('ggplot')
+            y_pos = np.arange(len(list(counter.keys())))
+            plt.bar(y_pos,list(counter.values()),align='center',alpha=0.7,color=['b','g','r','c','m'])
+            plt.xticks(y_pos,list(counter.keys()),rotation=70)
+            plt.ylabel("Frequency")
+            plt.xlabel("Protocol Name")
+            plt.tight_layout()
+            plt.savefig(dosya_yolu)
+            plt.close()
+            image_path2 = os.path.join(os.path.dirname(os.path.realpath(__file__)), "img")
+            self.protocol_image = customtkinter.CTkImage(Image.open(os.path.join(image_path2, "pro"+ str(count) + ".png")),size =(640,480))
+            self.protocol_img_mode = customtkinter.CTkLabel(self.third_frame_1, 
+                                                        font=customtkinter.CTkFont(size=21, weight="bold"),image= self.protocol_image,text="")
+            self.protocol_img_mode.grid(sticky="w")
+
+            #source ip pie graph
+            dosya_adi2 = "s_ip"+ str(count) + ".png"
+            dosya_yolu2 = os.path.join("./img/", dosya_adi2)
+
+            cap2 = pyshark.FileCapture(self.entry_6.get(),only_summaries=True,display_filter="ip")
+            protocolList2 = []
+            for packet in cap2:
+                line2 = str(packet)
+                fL= line2.split(" ")
+                protocolList2.append(fL[2])
+            cap2.close()
+            counter2 = collections.Counter(protocolList2)
+            a = list(counter2.keys())
+            b = list(counter2.values())
+            c = []
+            d = []
+            for i in range(len(b)): 
+                if int(b[i]) > int(self.third_entry_2.get()):
+                    d.append(b[i])
+                    c.append(a[i])
+            labels = c
+            sizes = d 
+            fig1, ax1 = plt.subplots()
+            ax1.pie(sizes, explode=None, labels=labels, autopct='%1.1f%%',
+                    shadow=True, startangle=90)
+            ax1.axis('equal')
+            plt.savefig(dosya_yolu2)
+            plt.close()
+            image_path3 = os.path.join(os.path.dirname(os.path.realpath(__file__)), "img")
+            self.s_ip_image = customtkinter.CTkImage(Image.open(os.path.join(image_path3, "s_ip"+ str(count) + ".png")),size =(640,480))
+            self.s_ip_img_mode = customtkinter.CTkLabel(self.third_frame_2, 
+                                                        font=customtkinter.CTkFont(size=21, weight="bold"),image= self.s_ip_image,text="")
+            self.s_ip_img_mode.grid(sticky="w")
+
+            #dest ip pie graph
+            dosya_adi3 = "d_ip"+ str(count) + ".png"
+            dosya_yolu3 = os.path.join("./img/", dosya_adi3)
+
+            cap3 = pyshark.FileCapture(self.entry_6.get(),only_summaries=True,display_filter="ip")
+            protocolList3 = []
+            for packet in cap3:
+                line3 = str(packet)
+                fL3= line3.split(" ")
+                protocolList3.append(fL3[3])
+            cap3.close()
+            counter3 = collections.Counter(protocolList3)
+            a = list(counter3.keys())
+            b = list(counter3.values())
+            c = []
+            d = []
+            for i in range(len(b)): 
+                if int(b[i]) > int(self.third_entry_3.get()):
+                    d.append(b[i])
+                    c.append(a[i])
+            labels = c
+            sizes = d 
+            fig1, ax1 = plt.subplots()
+            ax1.pie(sizes, explode=None, labels=labels, autopct='%1.1f%%',
+                    shadow=True, startangle=90)
+            ax1.axis('equal')
+            plt.savefig(dosya_yolu3)
+            plt.close()
+            image_path4 = os.path.join(os.path.dirname(os.path.realpath(__file__)), "img")
+            self.d_ip_image = customtkinter.CTkImage(Image.open(os.path.join(image_path4, "d_ip"+ str(count) + ".png")),size =(640,480))
+            self.d_ip_img_mode = customtkinter.CTkLabel(self.third_frame_4, 
+                                                        font=customtkinter.CTkFont(size=21, weight="bold"),image= self.d_ip_image,text="")
+            self.d_ip_img_mode.grid(sticky="w")
+
+            #capture_index
+            self.third_entry.destroy()
+            self.third_entry = customtkinter.CTkEntry(self.third_frame_0,
+                                                width=50,
+                                                placeholder_text="Count")
+            self.third_entry.grid(row=0, column=2,  pady=5, padx=10, sticky="we")
+            self.third_entry.insert("0",count + 1)
+
+
+    def analysis(self):
+            self.textbox_1.destroy()
+            capture = pyshark.FileCapture(self.entry_6.get(),use_json=self.switch_1.get(),display_filter=str(self.fifth_entry.get()))
+            index = int(self.entry_1.get())
+            p = capture[index]
+            capture.close()
+            self.textbox_1 = customtkinter.CTkTextbox(self.second_frame_22, fg_color="white", corner_radius=0,text_color="black")
+            self.textbox_1.grid(row=0, column=0, ipadx= 70,ipady= 300,pady=20,padx=20, sticky="nsew")       
+            self.textbox_1.insert("0.0", p)
+            self.label2_mode = customtkinter.CTkLabel(self.second_frame_11, text="                     IP Version:")
+            self.label2_mode.grid(row=6, column=0, pady=0, padx=10, sticky="w")
+            self.label3_mode = customtkinter.CTkLabel(self.second_frame_11, text="                     Source Address:")
+            self.label3_mode.grid(row=7, column=0, pady=0, padx=10, sticky="w")
+            self.label4_mode = customtkinter.CTkLabel(self.second_frame_11, text="                     Destination Address:")
+            self.label4_mode.grid(row=8, column=0, pady=0, padx=10, sticky="w")
+            self.label5_mode = customtkinter.CTkLabel(self.second_frame_11, text="                     Protocol Index:")
+            self.label5_mode.grid(row=9, column=0, pady=0, padx=10, sticky="w")
+            self.labelfree_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+            self.labelfree_mode.grid(row=2, column=1, pady=20, padx=10, sticky="w")
+            self.labelfree2_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+            self.labelfree2_mode.grid(row=2, column=2, pady=20, padx=10, sticky="w")
+            self.labelfree3_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+            self.labelfree3_mode.grid(row=5, column=1, pady=20, padx=10, sticky="w")
+            self.labelfree4_mode = customtkinter.CTkLabel(self.second_frame_11, text="")
+            self.labelfree4_mode.grid(row=5, column=2, pady=20, padx=10, sticky="w")
+            self.entry_2 = customtkinter.CTkEntry(self.second_frame_11,
+                                                width=200,
+                                                placeholder_text=p.ip.version)
+            self.entry_2.grid(row=6, column=1,  pady=20, padx=10, sticky="we")
+            self.entry_3 = customtkinter.CTkEntry(self.second_frame_11,
+                                                width=200,
+                                                placeholder_text=p.ip.src)
+            self.entry_3.grid(row=7, column=1,  pady=20, padx=10, sticky="we")
+            self.entry_4 = customtkinter.CTkEntry(self.second_frame_11,
+                                                width=200,
+                                                placeholder_text=p.ip.dst)
+            self.entry_4.grid(row=8, column=1,  pady=20, padx=10, sticky="we")
+            self.entry_5 = customtkinter.CTkEntry(self.second_frame_11,
+                                                width=200,
+                                                placeholder_text=p.ip.proto)
+            self.entry_5.grid(row=9, column=1,  pady=20, padx=10, sticky="we")       
+            self.entry_1.destroy()
+            self.entry_1 = customtkinter.CTkEntry(self.second_frame_11,
+                                            width=200,)
+            self.entry_1.grid(row=3, column=1,  pady=20, padx=5, sticky="we")
+            self.entry_1.insert("0", index)
+
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()
