@@ -240,9 +240,7 @@ class App(customtkinter.CTk):
         self.fifth_frame_1.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
         self.fifth_frame_2 = customtkinter.CTkFrame(self.fifth_frame, corner_radius=0,fg_color="transparent")
         self.fifth_frame_2.grid(row=1, column=0,padx=10,pady=10,sticky="nsew")
-        self.fifth_entry= customtkinter.CTkEntry(self.fifth_frame_1,
-                                                width=100,
-                                                placeholder_text="0")
+        self.fifth_entry= customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
         self.fifth_entry.grid(row=1, column=0,  pady=5, padx=60, sticky="we")
         self.fifth_entry_2= customtkinter.CTkEntry(self.fifth_frame_1,
                                                 width=100,
@@ -270,20 +268,10 @@ class App(customtkinter.CTk):
         self.fifth_label_4.grid(row=0, column=3, padx=10, pady=(20, 0))
         self.fifth_label_5 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Length Filter Max:", anchor="w",image=self.maxlen_image,compound="left")
         self.fifth_label_5.grid(row=0, column=4, padx=10, pady=(20, 0))
-        self.fifth_button = customtkinter.CTkButton(self.fifth_frame_1,
-                                                text="Filter",
-                                                border_width=2,  
-                                                fg_color="black",  
-                                                command=self.filter)
+        self.fifth_button = customtkinter.CTkButton(self.fifth_frame_1, text="Filter",border_width=2, fg_color="black", command=self.filter)
         self.fifth_button.grid(row=0, column=5, padx=10, pady=10)
-        self.fifth_button2 = customtkinter.CTkButton(self.fifth_frame_1,
-                                                text="Delete",
-                                                border_width=2,  
-                                                fg_color=None,  
-                                                command=self.delete2)
+        self.fifth_button2 = customtkinter.CTkButton(self.fifth_frame_1, text="Delete", border_width=2, fg_color=None,  command=self.delete2)
         self.fifth_button2.grid(row=1, column=5, padx=10, pady=10)
-
-
 
         # set default values
         self.scaling_optionemenu.set("100%")
@@ -292,9 +280,8 @@ class App(customtkinter.CTk):
         # select default frame
         self.select_frame_by_name("home")
 
-
-        
-    #################___FONK___####################
+     
+    ################# _____Functions_____ ####################
 
 
     def select_frame_by_name(self, name):
