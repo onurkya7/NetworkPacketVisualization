@@ -17,8 +17,8 @@ pip install -r requirements.txt
 
 ## Contributing
 
-- If you encounter any issues with the project, feel free to report them on [GitHub Issues](https://github.com/username/BreadcrumbsBugBountyHunter/issues).
-- If you wish to contribute to the project, you can submit a [Pull Request](https://github.com/username/BreadcrumbsBugBountyHunter/pulls).
+- If you encounter any issues with the project, feel free to report them on [GitHub Issues](https://github.com/onurkya7/BreadcrumbsBugBountyHunter/issues).
+- If you wish to contribute to the project, you can submit a [Pull Request](https://github.com/onurkya7/BreadcrumbsBugBountyHunter/pulls).
 
 ## License
 
