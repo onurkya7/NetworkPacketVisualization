@@ -3,7 +3,7 @@ This repository contains a packet visualization tool designed for Wireshark, sim
 
 <img src="https://img.shields.io/badge/Used Python 3.9.13- red">
 
-<img src="https://img.shields.io/badge/Licence-GNU General Public License v3.0-yellowgreen">
+<img src="https://img.shields.io/badge/Licence-Apache License 2.0-yellowgreen">
 
 ## Setup Environment
 
@@ -22,6 +22,6 @@ pip install -r requirements.txt
 
 ## License
 
-Our project is licensed under the [GNU General Public License v3.0](LICENSE).
+Our project is licensed under the [Apache License 2.0](LICENSE).
 
 
