@@ -12,7 +12,6 @@ import time
 import os.path
 
 class App(customtkinter.CTk):
-    
     def __init__(self):
         super().__init__()
 
@@ -46,46 +45,26 @@ class App(customtkinter.CTk):
         self.settings_image = customtkinter.CTkImage(light_image=Image.open(os.path.join(image_path, "settings.png")),
                                                      dark_image=Image.open(os.path.join(image_path, "settings.png")), size=(24, 24))
                                         
-    
-        # create navigation frame
+        # Create Navigation Frame
         self.navigation_frame = customtkinter.CTkFrame(self, corner_radius=0)
         self.navigation_frame.grid(row=0, column=0, sticky="nsew")
         self.navigation_frame.grid_rowconfigure(8, weight=1)
-
-        self.navigation_frame_label = customtkinter.CTkLabel(self.navigation_frame, text="  KAMIKAZE     ", image=self.logo_image,
-                                                             compound="left", font=customtkinter.CTkFont(size=21, weight="bold"))
+        self.navigation_frame_label = customtkinter.CTkLabel(self.navigation_frame, text="  KAMIKAZE     ", image=self.logo_image, compound="left", font=customtkinter.CTkFont(size=21, weight="bold"))
         self.navigation_frame_label.grid(row=0, column=0, padx=20, pady=34)
-
-        self.home_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Home                                 ",
-                                                   fg_color="transparent",font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
-                                                   image=self.home_image, anchor="w", command=self.home_button_event)
+        self.home_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Home                                 ", fg_color="transparent", font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"), image=self.home_image, anchor="w", command=self.home_button_event)
         self.home_button.grid(row=1, column=0, sticky="ew")
-
-        self.frame_2_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Packet Details                    ",
-                                                      fg_color="transparent",font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
-                                                      image=self.packet_image, anchor="w", command=self.frame_2_button_event)
+        self.frame_2_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Packet Details                    ", fg_color="transparent", font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"), image=self.packet_image, anchor="w", command=self.frame_2_button_event)
         self.frame_2_button.grid(row=2, column=0, sticky="ew")
-
-        self.frame_3_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Analysis Of Packets               ",
-                                                      fg_color="transparent",font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
-                                                      image=self.analysis_image, anchor="w", command=self.frame_3_button_event)
+        self.frame_3_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Analysis Of Packets               ", fg_color="transparent", font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"), image=self.analysis_image, anchor="w", command=self.frame_3_button_event)
         self.frame_3_button.grid(row=3, column=0, sticky="ew")
-
-        self.frame_4_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Settings                          ",
-                                                      fg_color="transparent",font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
-                                                      image=self.settings_image, anchor="w", command=self.frame_4_button_event)
+        self.frame_4_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Settings                          ", fg_color="transparent", font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"), image=self.settings_image, anchor="w", command=self.frame_4_button_event)
         self.frame_4_button.grid(row=9, column=0, sticky="ew")
-
-        self.frame_5_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Analysis by Filtering                           ",
-                                                      fg_color="transparent",font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
-                                                      image=self.settings_image, anchor="w", command=self.frame_5_button_event)
+        self.frame_5_button = customtkinter.CTkButton(self.navigation_frame, corner_radius=0, height=40, border_spacing=17, text=" Analysis by Filtering                           ", fg_color="transparent", font=customtkinter.CTkFont(size=16, weight="normal"), text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"), image=self.settings_image, anchor="w", command=self.frame_5_button_event)
         self.frame_5_button.grid(row=4, column=0, sticky="ew")
-
-        self.appearance_mode_menu = customtkinter.CTkOptionMenu(self.navigation_frame, values=["Light", "Dark", "System"],
-                                                                command=self.change_appearance_mode_event)
+        self.appearance_mode_menu = customtkinter.CTkOptionMenu(self.navigation_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_menu.grid(row=10, column=0, padx=20, pady=20, sticky="s")
-
-        # create home frame
+        
+        # Create Home Frame
         self.home_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.home_frame_33 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
         self.home_frame_33.grid(row=0, column=0,ipady= 500, sticky="nsew")
@@ -95,44 +74,24 @@ class App(customtkinter.CTk):
         self.frame_info.grid(row=1, column=0, columnspan=2, rowspan=4, pady=20, padx=100, sticky="nsew")
         self.frame_info.grid_rowconfigure(10, weight=1)
         self.frame_info.grid_columnconfigure(1, weight=1)
-        self.labelinfo_mode = customtkinter.CTkLabel(self.home_frame_33, 
-                                                     text="Listening makes attacking easier to understand..",
-                                                     font=customtkinter.CTkFont(size=21, weight="bold"),image= self.gb_image)
-        self.labelinfo_mode.grid(row=0, column=0, pady=20, padx=100, sticky="w")    
-        self.entry_6 = customtkinter.CTkEntry(self.frame_info,
-                                                width=650,
-                                                placeholder_text="Select Pcap File")
-        self.entry_6.grid(row=1, column=0,  pady=5, padx=10, sticky="we")
-        self.entry_7 = customtkinter.CTkEntry(self.frame_info,
-                                                width=650,
-                                                placeholder_text="Select Csv File")
-        self.entry_7.grid(row=3, column=0,  pady=5, padx=10, sticky="we")
-        self.folder_button = customtkinter.CTkButton(self.frame_info,
-                                                text="Browse",
-                                                border_width=2,
-                                                image=self.browse_image,
-                                                fg_color="black",  # <- no fg_color
-                                                command=self.my_fun)
-        self.folder_button.grid(row=1, column=1,padx=10, sticky="ew")
-        self.folder_button_2 = customtkinter.CTkButton(self.frame_info,
-                                                text="Browse",
-                                                border_width=2,
-                                                image=self.browse_image,
-                                                fg_color="black",  # <- no fg_color
-                                                command=self.my_fun)
-        self.folder_button_2.grid(row=3, column=1,padx=10, sticky="ew")
-        self.home_label_1 = customtkinter.CTkLabel(self.frame_info,
-                                                        text="Pcap:")
+        self.labelinfo_mode = customtkinter.CTkLabel(self.home_frame_33, text="Listening makes attacking easier to understand..", font=customtkinter.CTkFont(size=21, weight="bold"), image=self.gb_image)
+        self.labelinfo_mode.grid(row=0, column=0, pady=20, padx=100, sticky="w")
+        self.entry_6 = customtkinter.CTkEntry(self.frame_info, width=650, placeholder_text="Select Pcap File")
+        self.entry_6.grid(row=1, column=0, pady=5, padx=10, sticky="we")
+        self.entry_7 = customtkinter.CTkEntry(self.frame_info, width=650, placeholder_text="Select Csv File")
+        self.entry_7.grid(row=3, column=0, pady=5, padx=10, sticky="we")
+        self.folder_button = customtkinter.CTkButton(self.frame_info, text="Browse", border_width=2, image=self.browse_image, fg_color="black", command=self.my_fun)
+        self.folder_button.grid(row=1, column=1, padx=10, sticky="ew")
+        self.folder_button_2 = customtkinter.CTkButton(self.frame_info, text="Browse", border_width=2, image=self.browse_image, fg_color="black", command=self.my_fun)
+        self.folder_button_2.grid(row=3, column=1, padx=10, sticky="ew")
+        self.home_label_1 = customtkinter.CTkLabel(self.frame_info, text="Pcap:")
         self.home_label_1.grid(row=0, column=0, columnspan=1, pady=5, padx=0, sticky="")
-        self.home_label_2 = customtkinter.CTkLabel(self.frame_info,
-                                                        text="Csv:")
+        self.home_label_2 = customtkinter.CTkLabel(self.frame_info, text="Csv:")
         self.home_label_2.grid(row=2, column=0, columnspan=1, pady=5, padx=0, sticky="")
         self.home_frame_44 = customtkinter.CTkFrame(self.home_frame, corner_radius=0)
-        self.home_frame_44.grid(row=0, column=1,ipady= 500,ipadx=70,padx=0, sticky="nsew")
+        self.home_frame_44.grid(row=0, column=1, ipady=500, ipadx=70, padx=0, sticky="nsew")
     
-    
-        # create second frame
-        ##frame
+        # Create Second Frame
         self.second_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.second_frame_11 = customtkinter.CTkFrame(self.second_frame, corner_radius=0,fg_color="transparent")
         self.second_frame_11.grid(row=0, column=0,ipady= 500,ipadx=50, sticky="nsew")
@@ -152,25 +111,17 @@ class App(customtkinter.CTk):
         self.labelfree4_mode.grid(row=5, column=1, pady=20, padx=40, sticky="w")
         self.labelfree5_mode = customtkinter.CTkLabel(self.second_frame_11, text="       Enter the package number:")
         self.labelfree5_mode.grid(row=3, column=0, pady=20, padx=40, sticky="w")
-        #self.labelswitch_1 = customtkinter.CTkLabel(self.second_frame_11, text="       Use Json:")
-        #self.labelswitch_1.grid(row=5, column=0, pady=20, padx=40, sticky="w")        
         self.switch_1 = customtkinter.CTkSwitch(self.second_frame_11,text=" JSON",progress_color="green")
         self.switch_1.grid(row=4, column=1,pady=10, padx=10)     
-        self.entry_1 = customtkinter.CTkEntry(self.second_frame_11,
-                                            width=200,
-                                            placeholder_text="")
-        self.entry_1.grid(row=3, column=1,  pady=20, padx=10, sticky="we")
-        self.button_10 = customtkinter.CTkButton(self.second_frame_11,
-                                                text="Analyze",
-                                                border_width=2,  # <- custom border_width
-                                                fg_color=None,  # <- no fg_color
-                                                command=self.analysis)
+        self.entry_1 = customtkinter.CTkEntry(self.second_frame_11, width=200, placeholder_text="")
+        self.entry_1.grid(row=3, column=1, pady=20, padx=10, sticky="we")
+        self.button_10 = customtkinter.CTkButton(self.second_frame_11, text="Analyze", border_width=2, fg_color=None, command=self.analysis)
         self.button_10.grid(row=5, column=1, padx=20, pady=10)
-        self.textbox_1 = customtkinter.CTkTextbox(self.second_frame_22, fg_color="black", corner_radius=0,text_color="white")
-        self.textbox_1.grid(row=0, column=0, ipadx= 70,ipady= 300,pady=60,padx=20, sticky="nsew")       
+        self.textbox_1 = customtkinter.CTkTextbox(self.second_frame_22, fg_color="black", corner_radius=0, text_color="white")
+        self.textbox_1.grid(row=0, column=0, ipadx=70, ipady=300, pady=60, padx=20, sticky="nsew")
         self.textbox_1.insert("0.0", "Enter package index and analyze..")
-
-        # create third frame
+        
+        # Create Third Frame
         self.third_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.third_frame_1 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
         self.third_frame_1.grid(row=1, column=0,padx=10,pady=10,sticky="nsew")
@@ -183,43 +134,25 @@ class App(customtkinter.CTk):
         self.third_frame_0 = customtkinter.CTkFrame(self.third_frame, corner_radius=0,fg_color="transparent")
         self.third_frame_0.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
         self.third_frame_0.grid_columnconfigure(4, weight=1)
-        self.third_button_1 = customtkinter.CTkButton(self.third_frame_0,
-                                                text="Graph",
-                                                border_width=2,  
-                                                fg_color=None,
-                                                command=self.graph)
+        self.third_button_1 = customtkinter.CTkButton(self.third_frame_0, text="Graph", border_width=2, fg_color=None, command=self.graph)
         self.third_button_1.grid(row=0, column=0, padx=70, pady=10)
-        self.third_button_2 = customtkinter.CTkButton(self.third_frame_0,
-                                                text="Delete",
-                                                border_width=2,  
-                                                fg_color=None,  
-                                                command=self.delete)
+        self.third_button_2 = customtkinter.CTkButton(self.third_frame_0, text="Delete", border_width=2, fg_color=None, command=self.delete)
         self.third_button_2.grid(row=0, column=1, padx=70, pady=10)
-        self.third_entry = customtkinter.CTkEntry(self.third_frame_0,
-                                                width=30,
-                                                placeholder_text="Folder")
-        self.third_entry.grid(row=0, column=2,  pady=5, padx=70,ipadx=50, sticky="we")
-        self.third_entry.insert("0",0)
-
-        self.third_label_2 = customtkinter.CTkLabel(self.third_frame_3,
-                                                        text="Source Ip Limit:")
+        self.third_entry = customtkinter.CTkEntry(self.third_frame_0, width=30, placeholder_text="Folder")
+        self.third_entry.grid(row=0, column=2, pady=5, padx=70, ipadx=50, sticky="we")
+        self.third_entry.insert("0", 0)
+        self.third_label_2 = customtkinter.CTkLabel(self.third_frame_3, text="Source Ip Limit:")
         self.third_label_2.grid(row=1, column=0, columnspan=1, pady=10, padx=200, sticky="")
-        self.third_label_3 = customtkinter.CTkLabel(self.third_frame_3,
-                                                        text="Dest Ip Limit:")
+        self.third_label_3 = customtkinter.CTkLabel(self.third_frame_3, text="Dest Ip Limit:")
         self.third_label_3.grid(row=3, column=0, columnspan=1, pady=10, padx=200, sticky="")
-        self.third_entry_2= customtkinter.CTkEntry(self.third_frame_3,
-                                                width=50,
-                                                placeholder_text="Count_S")
-        self.third_entry_2.grid(row=2, column=0,  pady=10, padx=200, sticky="we")
-        self.third_entry_2.insert("0",0)
-        self.third_entry_3 = customtkinter.CTkEntry(self.third_frame_3,
-                                            width=50,
-                                            placeholder_text="Count_D ")
-        self.third_entry_3.grid(row=4, column=0,  pady=10, padx=200, sticky="we")
-        self.third_entry_3.insert("0",0)
-    
+        self.third_entry_2 = customtkinter.CTkEntry(self.third_frame_3, width=50, placeholder_text="Count_S")
+        self.third_entry_2.grid(row=2, column=0, pady=10, padx=200, sticky="we")
+        self.third_entry_2.insert("0", 0)
+        self.third_entry_3 = customtkinter.CTkEntry(self.third_frame_3, width=50, placeholder_text="Count_D")
+        self.third_entry_3.grid(row=4, column=0, pady=10, padx=200, sticky="we")
+        self.third_entry_3.insert("0", 0)
 
-        #settings (fourth frame)
+        # Settings (Fourth) Frame
         self.fourth_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
         self.fourth_frame_1 = customtkinter.CTkFrame(self.fourth_frame, corner_radius=0,fg_color="transparent")
         self.fourth_frame_1.grid(row=0, column=0,padx=10,pady=10,sticky="nsew")
@@ -242,22 +175,14 @@ class App(customtkinter.CTk):
         self.fifth_frame_2.grid(row=1, column=0,padx=10,pady=10,sticky="nsew")
         self.fifth_entry= customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
         self.fifth_entry.grid(row=1, column=0,  pady=5, padx=60, sticky="we")
-        self.fifth_entry_2= customtkinter.CTkEntry(self.fifth_frame_1,
-                                                width=100,
-                                                placeholder_text="0")
-        self.fifth_entry_2.grid(row=1, column=1,  pady=5, padx=60, sticky="we")
-        self.fifth_entry_3= customtkinter.CTkEntry(self.fifth_frame_1,
-                                                width=100,
-                                                placeholder_text="0")
-        self.fifth_entry_3.grid(row=1, column=2,  pady=5, padx=60, sticky="we")
-        self.fifth_entry_4= customtkinter.CTkEntry(self.fifth_frame_1,
-                                                width=100,
-                                                placeholder_text="0")
-        self.fifth_entry_4.grid(row=1, column=3,  pady=5, padx=60, sticky="we")
-        self.fifth_entry_5= customtkinter.CTkEntry(self.fifth_frame_1,
-                                                width=100,
-                                                placeholder_text="0")
-        self.fifth_entry_5.grid(row=1, column=4,  pady=5, padx=60, sticky="we")
+        self.fifth_entry_2 = customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
+        self.fifth_entry_2.grid(row=1, column=1, pady=5, padx=60, sticky="we")
+        self.fifth_entry_3 = customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
+        self.fifth_entry_3.grid(row=1, column=2, pady=5, padx=60, sticky="we")
+        self.fifth_entry_4 = customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
+        self.fifth_entry_4.grid(row=1, column=3, pady=5, padx=60, sticky="we")
+        self.fifth_entry_5 = customtkinter.CTkEntry(self.fifth_frame_1, width=100, placeholder_text="0")
+        self.fifth_entry_5.grid(row=1, column=4, pady=5, padx=60, sticky="we")
         self.fifth_label = customtkinter.CTkLabel(self.fifth_frame_1, text="  Protocol Filter:", anchor="w",image=self.ftp_image,compound="left")
         self.fifth_label.grid(row=0, column=0, padx=10, pady=(20, 0))
         self.fifth_label_2 = customtkinter.CTkLabel(self.fifth_frame_1, text="  Time Filter Min:", anchor="w",image=self.mintime_image,compound="left")
@@ -273,11 +198,11 @@ class App(customtkinter.CTk):
         self.fifth_button2 = customtkinter.CTkButton(self.fifth_frame_1, text="Delete", border_width=2, fg_color=None,  command=self.delete2)
         self.fifth_button2.grid(row=1, column=5, padx=10, pady=10)
 
-        # set default values
+        # Set Default Values
         self.scaling_optionemenu.set("100%")
         self.appearance_mode_menu.set("Dark")
 
-        # select default frame
+        # Select Default Frame
         self.select_frame_by_name("home")
 
      
@@ -285,14 +210,14 @@ class App(customtkinter.CTk):
 
 
     def select_frame_by_name(self, name):
-        # set button color for selected button
+        # Set button color for selected button
         self.home_button.configure(fg_color=("gray75", "gray25") if name == "home" else "transparent")
         self.frame_2_button.configure(fg_color=("gray75", "gray25") if name == "frame_2" else "transparent")
         self.frame_3_button.configure(fg_color=("gray75", "gray25") if name == "frame_3" else "transparent")
         self.frame_4_button.configure(fg_color=("gray75", "gray25") if name == "frame_4" else "transparent")
         self.frame_5_button.configure(fg_color=("gray75", "gray25") if name == "frame_5" else "transparent")
 
-        # show selected frame
+        # Show Selected Frame
         if name == "home":
             self.home_frame.grid(row=0, column=1,sticky="nsew")
         else:
@@ -375,7 +300,6 @@ class App(customtkinter.CTk):
         self.protocol_img_mode.destroy()
         self.s_ip_img_mode.destroy()
         self.d_ip_img_mode.destroy()
-        #self.protocol_img_mode2.destroy()
 
     def delete2(self):
         try:
@@ -401,7 +325,7 @@ class App(customtkinter.CTk):
     def graph(self):
             count = int(self.third_entry.get())
 
-            #protocol graph
+            # Protocol Graph
             dosya_adi = "pro"+ str(count) + ".png"
             dosya_yolu = os.path.join("./img/", dosya_adi)
 
@@ -428,7 +352,7 @@ class App(customtkinter.CTk):
                                                         font=customtkinter.CTkFont(size=21, weight="bold"),image= self.protocol_image,text="")
             self.protocol_img_mode.grid(sticky="w")
 
-            #source ip pie graph
+            # Source IP Pie Graph
             dosya_adi2 = "s_ip"+ str(count) + ".png"
             dosya_yolu2 = os.path.join("./img/", dosya_adi2)
 
@@ -462,7 +386,7 @@ class App(customtkinter.CTk):
                                                         font=customtkinter.CTkFont(size=21, weight="bold"),image= self.s_ip_image,text="")
             self.s_ip_img_mode.grid(sticky="w")
 
-            #dest ip pie graph
+            # Dest IP Pie Graph
             dosya_adi3 = "d_ip"+ str(count) + ".png"
             dosya_yolu3 = os.path.join("./img/", dosya_adi3)
 
@@ -496,7 +420,7 @@ class App(customtkinter.CTk):
                                                         font=customtkinter.CTkFont(size=21, weight="bold"),image= self.d_ip_image,text="")
             self.d_ip_img_mode.grid(sticky="w")
 
-            #capture_index
+            # Capture_Index
             self.third_entry.destroy()
             self.third_entry = customtkinter.CTkEntry(self.third_frame_0,
                                                 width=50,
